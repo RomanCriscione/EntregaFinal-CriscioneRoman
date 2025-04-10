@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Autores</title>
+</head>
+<body>
+    <h1>Autores Registrados</h1>
+
+    {% if autores %}
+        <ul>
+            {% for autor in autores %}
+                <li>{{ autor.nombre }} {{ autor.apellido }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay autores cargados.</p>
+    {% endif %}
+
+    <a href="{% url 'crear_autor' %}">Crear nuevo autor</a>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends 'appdeautores/base.html' %}
+
+
+{% block content %}
+<h2>Buscar Post</h2>
+<form method="get">
+    <input type="text" name="titulo" placeholder="Buscar por título" value="{{ query }}">
+    <button type="submit">Buscar</button>
+</form>
+
+{% if resultados %}
+    <h3>Resultados:</h3>
+    <ul>
+        {% for post in resultados %}
+            <li>{{ post.titulo }} - {{ post.contenido }}</li>
+        {% endfor %}
+    </ul>
+{% elif query %}
+    <p>No se encontraron resultados para "{{ query }}"</p>
+{% endif %}
+{% endblock %}

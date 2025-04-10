@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Posts</title>
+</head>
+<body>
+    <h1>Listado de Posts</h1>
+
+    <ul>
+        {% for post in posts %}
+            <li>
+                <strong>{{ post.titulo }}</strong><br>
+                Autor: {{ post.autor }}<br>
+                Categoría: {{ post.categoria }}<br>
+                Publicado el: {{ post.fecha_publicacion }}<br>
+                <a href="{% url 'editar_post' post.id %}">Editar</a> |
+                <a href="{% url 'eliminar_post' post.id %}">Eliminar</a>
+            </li>
+            <hr>
+        {% empty %}
+            <li>No hay posts disponibles.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'crear_post' %}">Crear nuevo Post</a><br>
+    <a href="{% url 'inicio' %}">Volver al inicio</a>
+</body>
+</html>

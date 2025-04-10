@@ -1,0 +1,12 @@
+{% extends "appdeautores/base.html" %}
+
+{% block title %}Crear Autor{% endblock %}
+
+{% block content %}
+<h2>Crear nuevo autor</h2>
+<form method="post" action="{% url 'crear_autor' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+</form>
+{% endblock %}

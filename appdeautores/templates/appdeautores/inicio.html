@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Página de inicio</title>
+</head>
+<body>
+    <h1>Bienvenido al blog</h1>
+
+    <ul>
+        <li><a href="{% url 'crear_autor' %}">Crear autor</a></li>
+        <li><a href="{% url 'crear_categoria' %}">Crear categoría</a></li>
+        <li><a href="{% url 'crear_post' %}">Crear post</a></li>
+        <li><a href="{% url 'listar_posts' %}">Ver todos los posts</a></li>
+        <li><a href="{% url 'buscar_post' %}">Buscar post</a></li>
+    </ul>
+</body>
+</html>
+
