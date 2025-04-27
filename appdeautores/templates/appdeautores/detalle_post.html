@@ -1,0 +1,19 @@
+<!-- templates/appdeautores/detalle_post.html -->
+{% extends "appdeautores/base.html" %}
+
+{% block content %}
+  <h2>{{ post.titulo }}</h2>
+  <p><strong>Fecha de publicación:</strong> {{ post.fecha_publicacion }}</p>
+  <p><strong>Autor:</strong> {{ post.autor }}</p>
+  <p><strong>Categoría:</strong> {{ post.categoria }}</p>
+  
+  {% if post.imagen %}
+    <img src="{{ post.imagen.url }}" alt="Imagen del post" style="max-width: 100%;">
+  {% endif %}
+
+  <div>
+    {{ post.contenido|safe }}
+  </div>
+
+  <a href="{% url 'listar_posts' %}">Volver a la lista</a>
+{% endblock %}

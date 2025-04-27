@@ -6,13 +6,39 @@
 </head>
 <body>
     <h1>App de Autores</h1>
+
     <nav>
         <a href="{% url 'inicio' %}">Inicio</a> |
+        <a href="{% url 'home' %}">Home</a> |
+        <a href="{% url 'about' %}">Acerca de mí</a> |
+        <a href="{% url 'listar_posts' %}">Posts</a> |
+        <a href="{% url 'crear_post' %}">Nuevo Post</a> |
         <a href="{% url 'crear_autor' %}">Nuevo Autor</a> |
         <a href="{% url 'crear_categoria' %}">Nueva Categoría</a> |
-        <a href="{% url 'crear_post' %}">Nuevo Post</a>
+        <a href="{% url 'listar_autores' %}">Autores</a> |
+        <a href="{% url 'buscar_post' %}">Buscar Posts</a> |
+        <a href="{% url 'inbox' %}">Inbox</a> 
+
+        {% if user.is_authenticated %}
+            Hola, {{ user.username }} |
+            <a href="{% url 'editar_perfil' %}">Editar Perfil</a> |
+            <a href="{% url 'logout' %}">Cerrar sesión</a>
+        {% else %}
+            <a href="{% url 'login' %}">Iniciar sesión</a> |
+            <a href="{% url 'register' %}">Registrarse</a>
+        {% endif %}
     </nav>
+
     <hr>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
     {% block content %}{% endblock %}
 </body>
 </html>

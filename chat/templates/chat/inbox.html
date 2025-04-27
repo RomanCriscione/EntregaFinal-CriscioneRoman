@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Inbox</title>
+</head>
+<body>
+    <h1>Mensajes Recibidos</h1>
+
+    {% if mensajes %}
+        <ul>
+            {% for mensaje in mensajes %}
+                <li>
+                    <strong>De:</strong> {{ mensaje.remitente.username }}<br>
+                    <strong>Asunto:</strong> {{ mensaje.asunto }}<br>
+                    <strong>Contenido:</strong> {{ mensaje.contenido }}<br>
+                    <small>Recibido el: {{ mensaje.fecha_envio|date:"d/m/Y H:i" }}</small>
+                </li>
+                <hr>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No tienes mensajes aún.</p>
+    {% endif %}
+
+    <a href="{% url 'enviar_mensaje' %}">Enviar nuevo mensaje</a><br>
+    <a href="{% url 'inicio' %}">Volver al Inicio</a>
+</body>
+</html>

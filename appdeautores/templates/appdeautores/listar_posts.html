@@ -14,6 +14,9 @@
                 Autor: {{ post.autor }}<br>
                 Categoría: {{ post.categoria }}<br>
                 Publicado el: {{ post.fecha_publicacion }}<br>
+                {% if post.imagen %}
+                    <img src="{{ post.imagen.url }}" alt="Imagen del post" width="100">
+                {% endif %}
                 <a href="{% url 'editar_post' post.id %}">Editar</a> |
                 <a href="{% url 'eliminar_post' post.id %}">Eliminar</a>
             </li>
